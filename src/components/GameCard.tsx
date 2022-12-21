@@ -18,6 +18,7 @@ const GameCard: FC<IGameCard> = (props: { game: IGame }) => {
           navigate('/games/' + props.game.title)
         }}
         title={props.game.title}
+        hoverable={true}
         bordered={false}
       >
         Description

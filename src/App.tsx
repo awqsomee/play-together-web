@@ -1,17 +1,41 @@
 import React, { FC } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import AppRouter from './components/AppRouter'
 import Navbar from './components/Navbar'
-import { useAppSelector } from './store/hooks'
+import Layout from 'antd/es/layout'
+import { ConfigProvider } from 'antd'
 
 const App: FC = () => {
-  const { isAuth } = useAppSelector((state) => state.userToolkit)
+  // const { isAuth, user } = useAppSelector((state) => state.userToolkit)
+  // const auth = selectAuth(store.getState())
+  const lightTheme = {
+    token: {
+      colorPrimary: '#7417a7',
+      wireframe: false,
+      colorError: '#fd3437',
+      colorInfo: '#004fbd',
+    },
+  }
+
+  const darkTheme = {
+    token: {
+      colorPrimary: '#7417a7',
+      wireframe: false,
+      colorError: '#fd3437',
+      colorInfo: '#004fbd',
+      colorBgBase: '#16111b',
+    },
+  }
+
   return (
-    <div>
-      <Navbar />
-      <AppRouter />
-    </div>
+    <ConfigProvider theme={lightTheme}>
+      <Layout>
+        <Navbar />
+        <Layout.Content>
+          <AppRouter />
+        </Layout.Content>
+      </Layout>
+    </ConfigProvider>
   )
 }
 

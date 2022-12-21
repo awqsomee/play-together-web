@@ -61,6 +61,7 @@ const Navbar: FC = () => {
                 <Button
                   onClick={() => {
                     dispatch(logout())
+                    // navigate('/')
                   }}
                   size="large"
                 >

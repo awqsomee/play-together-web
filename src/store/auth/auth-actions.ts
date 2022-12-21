@@ -9,7 +9,7 @@ export const authActions = {
       dispatch(setIsLoading(true))
       const response = await axios.post(`${localhost}/auth/registration`, { username, password })
       if (response.status === 201) {
-        localStorage.setItem('auth', 'true')
+        localStorage.setItem('auth', response.data.token)
         localStorage.setItem('username', username)
         dispatch(setUser({ username, password }))
         dispatch(setError(''))
@@ -24,7 +24,7 @@ export const authActions = {
       dispatch(setIsLoading(true))
       const response = await axios.post(`${localhost}/auth/login`, { username, password })
       if (response.status === 201) {
-        localStorage.setItem('auth', 'true')
+        localStorage.setItem('auth', response.data.token)
         localStorage.setItem('username', username)
         dispatch(setUser({ username, password }))
         dispatch(setError(''))

@@ -20,9 +20,7 @@ const GameCard: FC<IGameCard> = (props: { game: IGame }) => {
         title={props.game.title}
         hoverable={true}
         bordered={false}
-      >
-        Description
-      </Card>
+      ></Card>
     </Col>
   )
 }

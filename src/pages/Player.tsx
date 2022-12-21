@@ -16,13 +16,13 @@ const Player: FC = () => {
   }, [])
 
   const fetchData = async () => {
-    const { data } = await axios.get(`${localhost}/users/${user}`)
+    const { data } = await axios.get(`${localhost}/api/users/${user}`)
     setPlayer(data)
   }
   return (
     <Layout>
       <Row justify="center" align="middle" className="h100">
-        <Card style={{ width: 1280, height: 720, display: 'flex', justifyContent: 'center' }}>
+        <Card style={{ width: 1280, minHeight: 720, display: 'flex', justifyContent: 'center' }}>
           <>
             <Divider style={{ width: 1200 }}>{player.username}</Divider>
             <Divider>Searches for Team</Divider>

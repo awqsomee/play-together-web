@@ -6,7 +6,7 @@ const Acc: FC = () => {
   return (
     <Layout>
       <Row justify="center" align="middle" className="h100">
-        <Card style={{ width: 400, height: 300, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Card style={{ width: 400, minHeight: 300, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           ACC
         </Card>
       </Row>

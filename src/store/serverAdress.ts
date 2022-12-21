@@ -1,3 +1,3 @@
 export const amvera = ''
 
-export const localhost = 'http://localhost:5000/api'
+export const localhost = 'http://localhost:5000'

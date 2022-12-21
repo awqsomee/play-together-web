@@ -27,11 +27,11 @@ export enum RouteNames {
 export const publicRoutes: IRoute[] = [
   {
     path: RouteNames.MAIN,
-    component: Main,
+    component: Games,
   },
   {
     path: RouteNames.WELCOME,
-    component: Main,
+    component: Games,
   },
   {
     path: RouteNames.LOGIN,
@@ -62,11 +62,11 @@ export const publicRoutes: IRoute[] = [
 export const privateRoutes: IRoute[] = [
   {
     path: RouteNames.MAIN,
-    component: Main,
+    component: Games,
   },
   {
     path: RouteNames.WELCOME,
-    component: Main,
+    component: Games,
   },
   {
     path: RouteNames.PLAYERS,

@@ -15,7 +15,7 @@ const Players: FC = () => {
   }, [])
 
   const fetchPlayers = async () => {
-    const players = await axios.get(`${localhost}/users?title=${query}`)
+    const players = await axios.get(`${localhost}/api/users?title=${query}`)
     setPlayers(players.data)
   }
 

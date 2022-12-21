@@ -15,7 +15,7 @@ const Games: FC = () => {
   }, [])
 
   const fetchGames = async () => {
-    const games = await axios.get(`${localhost}/games/search?q=${query}`)
+    const games = await axios.get(`${localhost}/api/games/search?q=${query}`)
     setGames(games.data)
   }
 

@@ -1,4 +1,4 @@
-import { Button, Input, Space, Layout, Typography } from 'antd'
+import { Button, Input, Space, Layout, Typography, Divider } from 'antd'
 import { Row } from 'antd/es/grid'
 import {} from 'antd/es/layout/layout'
 import React, { FC } from 'react'
@@ -17,33 +17,36 @@ const Navbar: FC = () => {
     <Layout>
       <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', background: 'white' }}>
         <Row justify="space-between" align="middle">
-          <Button
-            onClick={() => {
-              navigate('/')
-            }}
-            type="text"
-            size="large"
-          >
-            LOGO
-          </Button>
-          <Button
-            onClick={() => {
-              navigate('/games')
-            }}
-            type="text"
-            size="large"
-          >
-            Games
-          </Button>
-          <Button
-            onClick={() => {
-              navigate('/players')
-            }}
-            type="text"
-            size="large"
-          >
-            Players
-          </Button>
+          <div>
+            <Button
+              onClick={() => {
+                navigate('/')
+              }}
+              type="text"
+              size="large"
+            >
+              LOGO
+            </Button>
+            <Divider type="vertical" />
+            <Button
+              onClick={() => {
+                navigate('/games')
+              }}
+              type="text"
+              size="large"
+            >
+              Games
+            </Button>
+            <Button
+              onClick={() => {
+                navigate('/players')
+              }}
+              type="text"
+              size="large"
+            >
+              Players
+            </Button>
+          </div>
           <Search placeholder="Search" allowClear enterButton style={{ width: 800, alignSelf: 'center' }}></Search>
           {isAuth ? (
             <div>

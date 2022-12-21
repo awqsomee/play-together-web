@@ -1,4 +1,5 @@
 import Acc from '../pages/Acc'
+import Game from '../pages/Game'
 import Games from '../pages/Games'
 import Login from '../pages/Login'
 import Main from '../pages/Main'
@@ -18,6 +19,7 @@ export enum RouteNames {
   PLAYERS = '/players',
   GAMES = '/games',
   ACC = '/acc',
+  GAME = '/games/:title',
 }
 
 export const publicRoutes: IRoute[] = [
@@ -45,6 +47,10 @@ export const publicRoutes: IRoute[] = [
     path: RouteNames.GAMES,
     component: Games,
   },
+  {
+    path: RouteNames.GAME,
+    component: Game,
+  },
 ]
 
 export const privateRoutes: IRoute[] = [
@@ -67,5 +73,9 @@ export const privateRoutes: IRoute[] = [
   {
     path: RouteNames.ACC,
     component: Acc,
+  },
+  {
+    path: RouteNames.GAME,
+    component: Game,
   },
 ]

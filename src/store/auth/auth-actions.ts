@@ -14,8 +14,8 @@ export const authActions = {
         dispatch(setUser({ username, password }))
         dispatch(setError(''))
       } else dispatch(setError('Registration Error'))
-      console.log(response)
     } catch (e) {
+      console.log(e)
       dispatch(setError('Registration Error'))
     }
   },
@@ -29,8 +29,8 @@ export const authActions = {
         dispatch(setUser({ username, password }))
         dispatch(setError(''))
       } else dispatch(setError('Login Error'))
-      console.log(response)
     } catch (e) {
+      console.log(e)
       dispatch(setError('Login Error'))
     }
   },

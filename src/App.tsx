@@ -4,8 +4,8 @@ import AppRouter from './components/AppRouter'
 import Navbar from './components/Navbar'
 import Layout from 'antd/es/layout'
 import { ConfigProvider } from 'antd'
-import { useDispatch } from 'react-redux'
 import { setUser } from './store/auth/auth'
+import { useAppDispatch } from './store/hooks'
 
 const App: FC = () => {
   // const { isAuth, user } = useAppSelector((state) => state.userToolkit)
@@ -29,7 +29,7 @@ const App: FC = () => {
     },
   }
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   // useEffect(() => {
   //   if (localStorage.getItem('auth')){

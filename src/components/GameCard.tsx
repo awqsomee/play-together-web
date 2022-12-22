@@ -26,7 +26,6 @@ const GameCard: FC<IGameCard> = (props: { game: IGame }) => {
         hoverable={true}
         bordered={false}
       >
-        <>{console.log(props.game.cover)}</>
         {/* {props.game.cover ? <img width={348} src={cover} /> : <></>} */}
         <Meta title={props.game.title} />
       </Card>

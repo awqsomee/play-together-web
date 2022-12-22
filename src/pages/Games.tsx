@@ -5,18 +5,21 @@ import { Row } from 'antd'
 import { IGame } from '../models/IGame'
 import { localhost } from '../store/serverAdress'
 import GameCard from '../components/GameCard'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { setGames } from '../store/games/games'
 
 const Games: FC = () => {
-  const [games, setGames] = useState<IGame[]>([])
+  const { games } = useAppSelector((state) => state.gamesToolkit)
   const [query, setQuery] = useState('')
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     fetchGames()
   }, [])
 
   const fetchGames = async () => {
-    const games = await axios.get(`${localhost}/api/games/search?q=${query}`)
-    setGames(games.data)
+    const { data } = await axios.get(`${localhost}/api/games`)
+    dispatch(setGames(data))
   }
 
   return (

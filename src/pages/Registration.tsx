@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import Layout from 'antd/es/layout/layout'
 import { Row, Card } from 'antd'
 import AuthForm from '../components/AuthForm'
-import { useDispatch } from 'react-redux'
 import { useAppDispatch } from '../store/hooks'
 import { authActions } from '../store/auth/auth-actions'
 

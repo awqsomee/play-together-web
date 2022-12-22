@@ -2,27 +2,27 @@ import { Button, Input, Space, Layout, Typography, Divider } from 'antd'
 import { Row } from 'antd/es/grid'
 import {} from 'antd/es/layout/layout'
 import React, { FC } from 'react'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { logout } from '../store/auth/auth'
 import { setQuery } from '../store/search/search'
 import axios from 'axios'
 import { localhost } from '../store/serverAdress'
-import { setPlayers } from '../store/players/players'
+import { setGames } from '../store/games/games'
 const { Search } = Input
 const { Header } = Layout
 const { Title } = Typography
 const Navbar: FC = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { isAuth, user } = useAppSelector((state) => state.authToolkit)
   const { searchQuery } = useAppSelector((state) => state.searchToolkit)
   const navigate = useNavigate()
 
   const searchHandler = async () => {
-    navigate('/players')
-    const { data } = await axios.get(`${localhost}/api/users?title=${searchQuery}`)
-    dispatch(setPlayers(data))
+    navigate('/games')
+    dispatch(setQuery(''))
+    const { data } = await axios.get(`${localhost}/api/games/search?q=${searchQuery}`)
+    dispatch(setGames(data))
   }
 
   return (

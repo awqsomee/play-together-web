@@ -6,13 +6,25 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import { logout } from '../store/auth/auth'
+import { setQuery } from '../store/search/search'
+import axios from 'axios'
+import { localhost } from '../store/serverAdress'
+import { setPlayers } from '../store/players/players'
 const { Search } = Input
 const { Header } = Layout
 const { Title } = Typography
 const Navbar: FC = () => {
   const dispatch = useDispatch()
   const { isAuth, user } = useAppSelector((state) => state.authToolkit)
+  const { searchQuery } = useAppSelector((state) => state.searchToolkit)
   const navigate = useNavigate()
+
+  const searchHandler = async () => {
+    navigate('/players')
+    const { data } = await axios.get(`${localhost}/api/users?title=${searchQuery}`)
+    dispatch(setPlayers(data))
+  }
+
   return (
     <Layout>
       <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', background: 'white' }}>
@@ -47,7 +59,17 @@ const Navbar: FC = () => {
               Players
             </Button>
           </div>
-          <Search placeholder="Search" allowClear enterButton style={{ width: 800, alignSelf: 'center' }}></Search>
+          <Search
+            placeholder="Search"
+            allowClear
+            size="large"
+            enterButton
+            value={searchQuery}
+            onChange={(event) => dispatch(setQuery(event.target.value))}
+            onPressEnter={async (event) => searchHandler()}
+            onSearch={(event) => searchHandler()}
+            style={{ width: 800, alignSelf: 'center' }}
+          ></Search>
           {isAuth ? (
             <div>
               <Space direction="horizontal">

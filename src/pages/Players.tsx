@@ -5,18 +5,25 @@ import { Card, Col, Row } from 'antd'
 import { localhost } from '../store/serverAdress'
 import PlayerCard from '../components/PlayerCard'
 import { IPlayer } from '../models/IPlayer'
+import { useDispatch } from 'react-redux'
+import { useAppSelector } from '../store/hooks'
+import { setPlayers } from '../store/players/players'
 
 const Players: FC = () => {
-  const [players, setPlayers] = useState<IPlayer[]>([])
-  const [query, setQuery] = useState('')
+  const dispatch = useDispatch()
+  // const { isAuth, user } = useAppSelector((state) => state.playersToolkit)
+  const { players } = useAppSelector((state) => state.playersToolkit)
+
+  // const [players, setPlayers] = useState<IPlayer[]>([])
+  // const [query, setQuery] = useState('')
 
   useEffect(() => {
     fetchPlayers()
   }, [])
 
   const fetchPlayers = async () => {
-    const players = await axios.get(`${localhost}/api/users?title=${query}`)
-    setPlayers(players.data)
+    const { data } = await axios.get(`${localhost}/api/users`)
+    dispatch(setPlayers(data))
   }
 
   return (

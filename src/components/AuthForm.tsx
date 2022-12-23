@@ -15,9 +15,9 @@ const AuthForm: FC<IAuthForm> = (props: { onSubmit: Function; title: string }) =
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
 
-  useEffect(() => {
-    dispatch(setError(''))
-  }, [props.title])
+  // useEffect(() => {
+  //   dispatch(setError(''))
+  // }, [props.title])
 
   const signUp = () => {
     props.onSubmit(username, password)
@@ -32,9 +32,9 @@ const AuthForm: FC<IAuthForm> = (props: { onSubmit: Function; title: string }) =
       onFinish={() => {
         signUp()
       }}
-      // onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
+      <>{console.log(error)}</>
       {error && <Typography.Text type="danger">{error}</Typography.Text>}
       <Form.Item label="Username" name="username" rules={[{ required: true, message: 'Input your username!' }]}>
         <Input value={username} onChange={(e) => setUsername(e.target.value)} />

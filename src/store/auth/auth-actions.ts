@@ -7,31 +7,61 @@ export const authActions = {
   registration: (username: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setIsLoading(true))
-      const response = await axios.post(`${localhost}/api/auth/registration`, { username, password })
-      if (response.status === 201) {
-        localStorage.setItem('auth', response.data.token)
-        localStorage.setItem('username', username)
-        dispatch(setUser({ username, password }))
-        dispatch(setError(''))
-      } else dispatch(setError('Registration Error'))
+      axios
+        .post(`${localhost}/api/auth/registration`, { username, password })
+        .then((response) => {
+          localStorage.setItem('auth', response.data.token)
+          localStorage.setItem('username', response.data.user.username)
+          dispatch(setUser(response.data.user))
+          dispatch(setError(''))
+        })
+        .catch((error) => {
+          dispatch(setError(error.response.data.message))
+        })
     } catch (e) {
       console.log(e)
-      dispatch(setError('Registration Error'))
     }
   },
+
   login: (username: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setIsLoading(true))
-      const response = await axios.post(`${localhost}/api/auth/login`, { username, password })
-      if (response.status === 201) {
-        localStorage.setItem('auth', response.data.token)
-        localStorage.setItem('username', username)
-        dispatch(setUser({ username, password }))
-        dispatch(setError(''))
-      } else dispatch(setError('Login Error'))
+      await axios
+        .post(`${localhost}/api/auth/login`, { username, password })
+        .then((response) => {
+          localStorage.setItem('auth', response.data.token)
+          localStorage.setItem('username', response.data.user.username)
+          dispatch(setUser(response.data.user))
+          dispatch(setError(''))
+        })
+        .catch((error) => {
+          dispatch(setError(error.response.data.message))
+        })
     } catch (e) {
       console.log(e)
-      dispatch(setError('Login Error'))
+    }
+  },
+
+  auth: () => async (dispatch: AppDispatch) => {
+    try {
+      console.log('au')
+
+      await axios
+        .get(`${localhost}/api/auth`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('auth')}`,
+          },
+        })
+        .then((response) => {
+          dispatch(setUser(response.data.user))
+          localStorage.setItem('stonksToken', response.data.token)
+        })
+        .catch((error) => {
+          localStorage.removeItem('stonksToken')
+          dispatch(setError(error.response.data.message))
+        })
+    } catch (e) {
+      console.log(e)
     }
   },
 }

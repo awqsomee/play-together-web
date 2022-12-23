@@ -16,20 +16,18 @@ const GameCard: FC<IGameCard> = (props: { game: IGame }) => {
   const cover = `${localhost}/${props.game.cover}`
 
   return (
-    <Col className="gutter-row" span={6}>
-      <Card
-        onClick={() => {
-          navigate('/games/' + props.game.title)
-        }}
-        // title={props.game.title}
-        cover={props.game.cover ? <img width={348} src={cover} /> : <></>}
-        hoverable={true}
-        bordered={false}
-      >
-        {/* {props.game.cover ? <img width={348} src={cover} /> : <></>} */}
-        <Meta title={props.game.title} />
-      </Card>
-    </Col>
+    <Card
+      style={{ margin: '20px 10px' }}
+      onClick={() => {
+        navigate('/games/' + props.game.title)
+      }}
+      cover={props.game.cover ? <img width={348} src={cover} /> : <></>}
+      hoverable={true}
+      bordered={false}
+    >
+      {/* {props.game.cover ? <img width={348} src={cover} /> : <></>} */}
+      <Meta title={props.game.title} />
+    </Card>
   )
 }
 

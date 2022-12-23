@@ -1,29 +1,25 @@
 import React, { FC, useState, useEffect } from 'react'
-import axios from 'axios'
-import Layout from 'antd/es/layout/layout'
-import { Col, Row } from 'antd'
-import { IGame } from '../models/IGame'
-import { localhost } from '../store/serverAdress'
+import PropTypes from 'prop-types'
+import { Col, Layout, Row } from 'antd'
 import GameCard from '../components/GameCard'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { setGames } from '../store/games/games'
-import { setIsSearching } from '../store/search/search'
+import { useAppSelector } from '../store/hooks'
+import { localhost } from '../store/serverAdress'
+import axios from 'axios'
+import { IGame } from '../models/IGame'
 
-const Games: FC = () => {
-  const { games } = useAppSelector((state) => state.gamesToolkit)
-  const { isSearching } = useAppSelector((state) => state.searchToolkit)
-  const dispatch = useAppDispatch()
-
+const MyGames: FC = () => {
+  const { user } = useAppSelector((state) => state.authToolkit)
+  const [games, setGames] = useState<IGame[]>([])
   useEffect(() => {
-    if (isSearching) dispatch(setIsSearching(false))
-    else fetchGames()
+    fetchData()
   }, [])
 
-  const fetchGames = async () => {
-    const { data } = await axios.get(`${localhost}/api/games`)
-    dispatch(setGames(data))
-  }
+  const fetchData = async () => {
+    const { data } = await axios.get(`${localhost}/api/users/${user.username}`)
+    console.log(data)
 
+    setGames(data.games)
+  }
   return (
     <Layout>
       <Row justify="center" className="h100" style={{ margin: '20px' }}>
@@ -56,4 +52,6 @@ const Games: FC = () => {
   )
 }
 
-export default Games
+MyGames.propTypes = {}
+
+export default MyGames

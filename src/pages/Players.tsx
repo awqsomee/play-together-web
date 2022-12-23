@@ -25,8 +25,6 @@ const Players: FC = () => {
   }, [selectedGames])
 
   const fetchPlayers = async () => {
-    console.log(1)
-
     await Promise.all([dispatch(playersActions.getPlayers(selectedGames)), dispatch(gamesActions.getGames(''))])
   }
 
@@ -41,10 +39,8 @@ const Players: FC = () => {
 
   return (
     <Layout>
-      <>{console.log(selectedGames)}</>
-      <>{console.log(players)}</>
       <Filter />
-      <Row justify="center" style={{ margin: '40px' }} className="h100">
+      <Row justify="center" className="h100">
         <div className="site-card-wrapper w75">
           <Row gutter={[16, 24]}>
             {players.map((player) => (

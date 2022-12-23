@@ -33,6 +33,7 @@ const Game: FC = () => {
   const fetchData = async () => {
     const response = await axios.get(`${localhost}/api/games/${title}`)
     const game = response.data
+
     if (isAuth) {
       const { data } = await axios.get<IPlayer>(`${localhost}/api/users/${user.username}/playing`)
       if (data.games.includes(game.title)) setIsPlaying(true)

@@ -13,18 +13,39 @@ const Filter: FC = () => {
   const { games } = useAppSelector((state) => state.gamesToolkit)
 
   return (
-    <Layout>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        margin: 'auto',
+        width: '99vw',
+      }}
+    >
       <div
-        className="site-card-wrapper w75"
-        style={{ display: 'flex', width: '100vw', justifyContent: 'center', margin: '40px' }}
+        style={{
+          display: 'flex',
+          width: '100vw',
+          justifyContent: 'center',
+          margin: '10px',
+          height: '90px',
+        }}
       >
-        <Row style={{ width: '90vw', height: '30px' }} gutter={[16, 0]}>
+        <Row
+          className="hideScroll"
+          style={{
+            width: '93vw',
+            overflowX: 'scroll',
+            // overflowY: 'hidden',
+            flexWrap: 'nowrap',
+          }}
+          gutter={[16, 0]}
+        >
           {games.map((game) => (
             <GameButton key={game.title} game={game} />
           ))}
         </Row>
       </div>
-    </Layout>
+    </div>
   )
 }
 

@@ -7,7 +7,7 @@ import { authActions } from '../store/auth/auth-actions'
 const Acc: FC = () => {
   const dispatch = useAppDispatch()
   const { isLoading, error, user } = useAppSelector((state) => state.authToolkit)
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState(user.username)
 
   return (
     <Layout>
@@ -17,7 +17,7 @@ const Acc: FC = () => {
             name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
-            initialValues={{ remember: true }}
+            initialValues={{ remember: true, username: user.username }}
             onFinish={() => {
               dispatch(authActions.editUserInfo({ username }))
             }}
@@ -25,7 +25,7 @@ const Acc: FC = () => {
           >
             {error && <Typography.Text type="danger">{error}</Typography.Text>}
             <Form.Item label="Username" name="username">
-              <Input defaultValue={user.username} value={username} onChange={(e) => setUsername(e.target.value)} />
+              <Input value={username} onChange={(e) => setUsername(e.target.value)} />
             </Form.Item>
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

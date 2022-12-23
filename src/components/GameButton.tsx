@@ -17,33 +17,27 @@ const GameButton: FC<IGameButton> = (props: IGameButton) => {
   const [bgColor, setBgColor] = useState(isChecked ? '#7417a7' : '#FFF')
 
   return (
-    <Col className="gutter-row" span={2}>
-      {/* <Button type={type}>
-        <Typography.Title level={5}>{props.game.title}</Typography.Title>
-      </Button> */}
-      <>{console.log(isChecked)}</>
-      <Card
-        onClick={() => {
-          if (isChecked) {
-            setBgColor('#FFF')
-            setIsChecked(false)
-            dispatch(setSelectedGames(selectedGames.filter((title) => title != props.game.title)))
-          } else {
-            setBgColor('#7417a7')
-            setIsChecked(true)
-            dispatch(setSelectedGames([...selectedGames, props.game.title]))
-          }
-        }}
-        // title={props.game.title}
-        hoverable={true}
-        bordered={false}
-        color="white"
-        style={{ background: bgColor }}
-      >
-        {/* {props.game.cover ? <img width={348} src={cover} /> : <></>} */}
-        <Meta title={props.game.title} />
-      </Card>
-    </Col>
+    <Card
+      onClick={() => {
+        if (isChecked) {
+          setBgColor('#FFF')
+          setIsChecked(false)
+          dispatch(setSelectedGames(selectedGames.filter((title) => title != props.game.title)))
+        } else {
+          setBgColor('#7417a7')
+          setIsChecked(true)
+          dispatch(setSelectedGames([...selectedGames, props.game.title]))
+        }
+      }}
+      // title={props.game.title}
+      hoverable={true}
+      bordered={false}
+      color="white"
+      style={{ background: bgColor, width: 'fit-content', margin: '0px 5px', height: '70px' }}
+    >
+      {/* {props.game.cover ? <img width={348} src={cover} /> : <></>} */}
+      <Meta title={props.game.title} />
+    </Card>
   )
 }
 

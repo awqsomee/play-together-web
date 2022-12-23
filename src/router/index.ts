@@ -3,6 +3,7 @@ import Game from '../pages/Game'
 import Games from '../pages/Games'
 import Login from '../pages/Login'
 import Main from '../pages/Main'
+import MyGames from '../pages/MyGames'
 import Player from '../pages/Player'
 import Players from '../pages/Players'
 import Registration from '../pages/Registration'
@@ -22,6 +23,7 @@ export enum RouteNames {
   GAMES = '/games',
   GAME = '/:title',
   ACC = '/acc',
+  MY_GAMES = 'lib',
 }
 
 export const publicRoutes: IRoute[] = [
@@ -87,5 +89,9 @@ export const privateRoutes: IRoute[] = [
   {
     path: RouteNames.ACC,
     component: Acc,
+  },
+  {
+    path: RouteNames.MY_GAMES,
+    component: MyGames,
   },
 ]

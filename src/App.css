@@ -139,3 +139,12 @@ table {
 .w60 {
   width: 60vw;
 }
+
+.hideScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hideScroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

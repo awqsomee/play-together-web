@@ -78,7 +78,7 @@ const Navbar: FC = () => {
               <Space direction="horizontal">
                 <Button
                   onClick={() => {
-                    navigate('/acc')
+                    navigate('/lib')
                   }}
                   type="text"
                   size="large"

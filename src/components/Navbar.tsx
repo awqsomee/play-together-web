@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { logout } from '../store/auth/auth'
-import { setQuery } from '../store/search/search'
+import { setIsSearching, setQuery } from '../store/search/search'
 import axios from 'axios'
 import { localhost } from '../store/serverAdress'
 import { setGames } from '../store/games/games'
@@ -19,9 +19,10 @@ const Navbar: FC = () => {
   const navigate = useNavigate()
 
   const searchHandler = async () => {
-    navigate('/games')
+    dispatch(setIsSearching(true))
     dispatch(setQuery(''))
     const { data } = await axios.get(`${localhost}/api/games/search?q=${searchQuery}`)
+    navigate('/games')
     dispatch(setGames(data))
   }
 

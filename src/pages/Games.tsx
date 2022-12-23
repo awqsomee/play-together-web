@@ -7,14 +7,16 @@ import { localhost } from '../store/serverAdress'
 import GameCard from '../components/GameCard'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { setGames } from '../store/games/games'
+import { setIsSearching } from '../store/search/search'
 
 const Games: FC = () => {
   const { games } = useAppSelector((state) => state.gamesToolkit)
-  const [query, setQuery] = useState('')
+  const { isSearching } = useAppSelector((state) => state.searchToolkit)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    fetchGames()
+    if (isSearching) dispatch(setIsSearching(false))
+    else fetchGames()
   }, [])
 
   const fetchGames = async () => {

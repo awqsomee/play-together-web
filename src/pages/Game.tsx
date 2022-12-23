@@ -57,7 +57,7 @@ const Game: FC = () => {
 
   const searchForTeam = async () => {
     await axios.post(
-      `${localhost}/api/users/search`,
+      `${localhost}/api/users/searchteam`,
       { id: game.id, searching: !isSearching },
       {
         headers: {

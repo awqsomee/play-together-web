@@ -10,7 +10,7 @@ import { authActions } from './store/auth/auth-actions'
 
 const App: FC = () => {
   const dispatch = useAppDispatch()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       console.log(localStorage.getItem('auth'))

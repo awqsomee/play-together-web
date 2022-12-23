@@ -19,8 +19,9 @@ const AuthForm: FC<IAuthForm> = (props: { onSubmit: Function; title: string }) =
     dispatch(setError(''))
   }, [props.title])
 
-  const signUp = () => {
-    props.onSubmit(username, password)
+  const onSubmit = () => {
+    if (props.title === 'Log In' || password === repeatPassword) props.onSubmit(username, password)
+    else dispatch(setError(`Passwords don't match`))
   }
 
   return (
@@ -30,11 +31,10 @@ const AuthForm: FC<IAuthForm> = (props: { onSubmit: Function; title: string }) =
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={() => {
-        signUp()
+        onSubmit()
       }}
       autoComplete="off"
     >
-      <>{console.log(error)}</>
       {error && <Typography.Text type="danger">{error}</Typography.Text>}
       <Form.Item label="Username" name="username" rules={[{ required: true, message: 'Input your username!' }]}>
         <Input value={username} onChange={(e) => setUsername(e.target.value)} />

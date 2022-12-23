@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { AppDispatch } from '..'
+import { IUser } from '../../models/IUser'
 import { localhost } from '../serverAdress'
 import { setError, setIsLoading, setUser } from './auth'
 
@@ -44,8 +45,6 @@ export const authActions = {
 
   auth: () => async (dispatch: AppDispatch) => {
     try {
-      console.log('au')
-
       await axios
         .get(`${localhost}/api/auth`, {
           headers: {
@@ -55,9 +54,30 @@ export const authActions = {
         .then((response) => {
           dispatch(setUser(response.data.user))
           localStorage.setItem('stonksToken', response.data.token)
+          dispatch(setError(''))
         })
         .catch((error) => {
           localStorage.removeItem('stonksToken')
+          dispatch(setError(error.response.data.message))
+        })
+    } catch (e) {
+      console.log(e)
+    }
+  },
+
+  editUserInfo: (userInfo: IUser) => async (dispatch: AppDispatch) => {
+    try {
+      await axios
+        .put(`${localhost}/api/users/edit`, userInfo, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('auth')}`,
+          },
+        })
+        .then((response) => {
+          dispatch(setUser(response.data.user))
+          dispatch(setError(''))
+        })
+        .catch((error) => {
           dispatch(setError(error.response.data.message))
         })
     } catch (e) {

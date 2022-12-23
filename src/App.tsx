@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import './App.css'
 import AppRouter from './components/AppRouter'
 import Navbar from './components/Navbar'
@@ -10,15 +10,15 @@ import { authActions } from './store/auth/auth-actions'
 
 const App: FC = () => {
   const dispatch = useAppDispatch()
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       console.log(localStorage.getItem('auth'))
-      dispatch(setIsLoading(true))
-      dispatch(authActions.auth()).finally(() => dispatch(setIsLoading(false)))
-    } else dispatch(setIsLoading(false))
+      setIsLoading(true)
+      dispatch(authActions.auth()).finally(() => setIsLoading(false))
+    } else setIsLoading(false)
   }, [])
 
-  const { isLoading } = useAppSelector((state) => state.authToolkit)
   // const auth = selectAuth(store.getState())
   const lightTheme = {
     token: {

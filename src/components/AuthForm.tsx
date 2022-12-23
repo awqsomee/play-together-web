@@ -15,9 +15,9 @@ const AuthForm: FC<IAuthForm> = (props: { onSubmit: Function; title: string }) =
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
 
-  // useEffect(() => {
-  //   dispatch(setError(''))
-  // }, [props.title])
+  useEffect(() => {
+    dispatch(setError(''))
+  }, [props.title])
 
   const signUp = () => {
     props.onSubmit(username, password)

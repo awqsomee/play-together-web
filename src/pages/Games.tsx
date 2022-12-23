@@ -26,7 +26,7 @@ const Games: FC = () => {
 
   return (
     <Layout>
-      <Row justify="center" align="middle" className="h100">
+      <Row justify="center" className="h100" style={{ margin: '40px' }}>
         <div className="site-card-wrapper w75">
           <Row gutter={[16, 24]}>
             {games.map((game) => (

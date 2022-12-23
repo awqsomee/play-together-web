@@ -37,8 +37,10 @@ const Navbar: FC = () => {
               }}
               type="text"
               size="large"
+              style={{ fontWeight: 'bold' }}
             >
-              LOGO
+              {/* LOGO */}
+              PlayTogether
             </Button>
             <Divider type="vertical" />
             <Button

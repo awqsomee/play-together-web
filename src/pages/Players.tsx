@@ -44,7 +44,7 @@ const Players: FC = () => {
       <>{console.log(selectedGames)}</>
       <>{console.log(players)}</>
       <Filter />
-      <Row justify="center" align="middle" className="h100">
+      <Row justify="center" style={{ margin: '40px' }} className="h100">
         <div className="site-card-wrapper w75">
           <Row gutter={[16, 24]}>
             {players.map((player) => (

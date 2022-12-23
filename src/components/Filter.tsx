@@ -18,7 +18,7 @@ const Filter: FC = () => {
         className="site-card-wrapper w75"
         style={{ display: 'flex', width: '100vw', justifyContent: 'center', margin: '40px' }}
       >
-        <Row style={{ width: '100vw' }} gutter={[16, 24]}>
+        <Row style={{ width: '90vw', height: '30px' }} gutter={[16, 0]}>
           {games.map((game) => (
             <GameButton key={game.title} game={game} />
           ))}

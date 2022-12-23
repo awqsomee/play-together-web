@@ -25,7 +25,9 @@ const PlayerCard: FC<IPlayerCard> = (props: { player: IPlayer }) => {
           hoverable={true}
           bordered={false}
         >
-          {props.player.searches.map((game) => game.title)}
+          {props.player.searches.map((game) => (
+            <div>{game.title}</div>
+          ))}
         </Card>
       ) : (
         <Card

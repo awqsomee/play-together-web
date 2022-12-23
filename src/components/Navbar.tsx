@@ -83,9 +83,18 @@ const Navbar: FC = () => {
                   type="text"
                   size="large"
                 >
+                  My Games
+                </Button>
+                <Divider type="vertical" />
+                <Button
+                  onClick={() => {
+                    navigate('/acc')
+                  }}
+                  type="text"
+                  size="large"
+                >
                   {user.username}
                 </Button>
-                <Title level={5}></Title>
                 <Button
                   onClick={() => {
                     dispatch(logout())

@@ -4,8 +4,7 @@ import AppRouter from './components/AppRouter'
 import Navbar from './components/Navbar'
 import Layout from 'antd/es/layout'
 import { ConfigProvider } from 'antd'
-import { setIsLoading, setUser } from './store/auth/auth'
-import { useAppDispatch, useAppSelector } from './store/hooks'
+import { useAppDispatch } from './store/hooks'
 import { authActions } from './store/auth/auth-actions'
 
 const App: FC = () => {
@@ -13,8 +12,6 @@ const App: FC = () => {
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     if (localStorage.getItem('auth')) {
-      console.log(localStorage.getItem('auth'))
-      setIsLoading(true)
       dispatch(authActions.auth()).finally(() => setIsLoading(false))
     } else setIsLoading(false)
   }, [])

@@ -77,11 +77,17 @@ const Game: FC = () => {
       <Row justify="center" align="middle" className="h100">
         <Card
           // title={title}
-          style={{ width: 1280, minHeight: '720px', margin: '40px', display: 'flex', justifyContent: 'center' }}
+          style={{
+            width: 1280,
+            minHeight: '720px',
+            margin: '40px',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
           loading={isLoading}
         >
           <>
-            <Divider style={{ width: 1200 }}>
+            <Divider style={{ width: 1000 }}>
               <Typography.Title>{game.title}</Typography.Title>
             </Divider>
             <div style={{ display: 'flex', flexDirection: 'row' }}>

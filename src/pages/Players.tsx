@@ -42,11 +42,44 @@ const Players: FC = () => {
       <Filter />
       <Row justify="center" className="h100">
         <div className="site-card-wrapper w75">
-          <Row gutter={[16, 24]}>
-            {players.map((player) => (
-              <PlayerCard key={player.username} player={player} />
-            ))}
-          </Row>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+            <Col className="gutter-row" span={6}>
+              {/* <Row gutter={[16, 24]}> */}
+              {players.map((player, index) =>
+                index % 4 === 0 && player.searches.length > 0 ? (
+                  <PlayerCard key={player.username} player={player} />
+                ) : null
+              )}
+              {/* </Row> */}
+            </Col>
+            <Col className="gutter-row" span={6}>
+              {/* <Row gutter={[16, 24]}> */}
+              {players.map((player, index) =>
+                index % 4 === 1 && player.searches.length > 0 ? (
+                  <PlayerCard key={player.username} player={player} />
+                ) : null
+              )}
+              {/* </Row> */}
+            </Col>
+            <Col className="gutter-row" span={6}>
+              {/* <Row gutter={[16, 24]}> */}
+              {players.map((player, index) =>
+                index % 4 === 2 && player.searches.length > 0 ? (
+                  <PlayerCard key={player.username} player={player} />
+                ) : null
+              )}
+              {/* </Row> */}
+            </Col>
+            <Col className="gutter-row" span={6}>
+              {/* <Row gutter={[16, 24]}> */}
+              {players.map((player, index) =>
+                index % 4 === 3 && player.searches.length > 0 ? (
+                  <PlayerCard key={player.username} player={player} />
+                ) : null
+              )}
+              {/* </Row> */}
+            </Col>
+          </div>
         </div>
       </Row>
     </Layout>

@@ -15,7 +15,7 @@ interface IPlayerCard {
 const PlayerCard: FC<IPlayerCard> = (props: { player: IPlayer }) => {
   const navigate = useNavigate()
   return (
-    <Col className="gutter-row" span={6}>
+    <div style={{ margin: '20px 10px' }}>
       {props.player?.searches ? (
         <Card
           onClick={() => {
@@ -40,7 +40,7 @@ const PlayerCard: FC<IPlayerCard> = (props: { player: IPlayer }) => {
           <Title level={5}>{props.player.username}</Title>
         </Card>
       )}
-    </Col>
+    </div>
   )
 }
 

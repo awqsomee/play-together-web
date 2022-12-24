@@ -27,6 +27,14 @@ const Player: FC = () => {
             <Divider style={{ width: 1200 }}>
               <Typography.Title>{player.username}</Typography.Title>
             </Divider>
+            <>{console.log(player)}</>
+            {player.description ? (
+              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                {player.description}
+              </div>
+            ) : (
+              <></>
+            )}
             <Divider>Searches for Team</Divider>
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
               <Col className="gutter-row" span={6}>
